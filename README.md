@@ -7,6 +7,9 @@ Private statistics is an application which creates statistics about pacients' me
 Similar applications are the following:
 1. Secure multi-party computation that allows companies to create different statistics about their health condition. The application runs on a browser and can be accessed by concurrent users. The application is availaible on bitbucket: https://bitbucket.org/proiect-taip/secure_multi-party_computation .
 
+Important names in the field: 
+Kristin Lauter (Microsoft Research), Michael Naehrig (Microsoft Research), Emiliano de Cristofaro, Joppe W. Bos
+
 Resoures and tools available:
 HElib (a software library that implements homomorphic encryption) - https://github.com/shaih/HElib 
 
