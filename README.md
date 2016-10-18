@@ -2,7 +2,7 @@
 Project for Advanced Software Engineering Techniques, year 2016.  
 Project members: Oana Ifrim, Iulia Obreja, Carmen Cojocaru, Andrei Bărbuță, Dragoș Burghelea.
 
-Private statistics is an application which creates statistics about pcients' medical information keeping their data private.
+Private statistics is an application which creates statistics about pacients' medical information keeping their data private.
 
 Similar applications are the following:
 1. Secure multi-party computation that allows companies to create different statistics about their health condition. The application runs on a browser and can be accessed by concurrent users. The application is availaible on bitbucket: https://bitbucket.org/proiect-taip/secure_multi-party_computation .
