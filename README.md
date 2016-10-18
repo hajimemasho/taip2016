@@ -10,7 +10,7 @@ Similar applications are the following:
 Important names in the field:  
 Kristin Lauter (Microsoft Research), Michael Naehrig (Microsoft Research), Emiliano de Cristofaro, Joppe W. Bos
 
-Resoures and tools available:
+Resoures and tools available:  
 HElib (a software library that implements homomorphic encryption) - https://github.com/shaih/HElib 
 
 Relevant links:  
