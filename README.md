@@ -10,9 +10,9 @@ Similar applications are the following:
 Resoures and tools available:
 HElib (a software library that implements homomorphic encryption) - https://github.com/shaih/HElib 
 
-Relevant links:
-https://www.microsoft.com/en-us/research/wp-content/uploads/2015/11/ManualHE.pdf
-https://eprint.iacr.org/2011/141.pdf
-https://eprint.iacr.org/2014/336.pdf
-http://eprint.iacr.org/2015/133.pdf
+Relevant links:  
+https://www.microsoft.com/en-us/research/wp-content/uploads/2015/11/ManualHE.pdf  
+https://eprint.iacr.org/2011/141.pdf  
+https://eprint.iacr.org/2014/336.pdf  
+http://eprint.iacr.org/2015/133.pdf  
 
