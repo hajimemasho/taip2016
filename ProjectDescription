@@ -23,3 +23,22 @@ Interface Module (Andrei Barbuta):
 - the interface module will provide the GUI for the application
 - the purpose of this module is to generate a simple intuitive inteface using specifically designed classes for objects such as buttons, textfields, etc.
 - in order to achieve this goal, there will be a MainUI java class file in which objects of the designed classes Button, TextInput, List will be implemented
+
+Oana Ifrim: 
+https://github.com/hajimemasho/taip2016/blob/master/ActivityDiagram-LoggerModule.png
+https://github.com/hajimemasho/taip2016/blob/master/ClassDiagram-LoggerModule.png
+https://github.com/hajimemasho/taip2016/blob/master/PackageDiagram.png
+
+Iulia Obreja: 
+https://github.com/hajimemasho/taip2016/blob/master/ClassDiagram-UtilitiesModule.png
+
+Carmen Cojocaru: 
+https://github.com/hajimemasho/taip2016/blob/master/ClassDiagram%20-%20SecurityModule2.png
+https://github.com/hajimemasho/taip2016/blob/master/SequenceDiagram%20-%20SecurityModule.png
+
+Dragos Burghelea:
+https://github.com/hajimemasho/taip2016/blob/master/ClassDiagram-DBModule.png
+https://github.com/hajimemasho/taip2016/blob/master/ApplicationUseCase-.png
+
+Andrei Barbuta:
+https://github.com/hajimemasho/taip2016/blob/master/ClassDiagram-InterfaceModule.png
