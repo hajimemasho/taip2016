@@ -10,8 +10,11 @@ Similar applications are the following:
 
 Important names in the field:  
 Craig Gentry (IBM's Thomas J. Watson Research Center) - first plausible construction for a fully homomorphic encryption scheme
+
 Shai Halevi (IBM's Thomas J. Watson Research Center) - principal developer of the HElib library, one of the leading researchers on homomorphic encryption
+
 Nigel Smart (University of Bristol)
+
 Kristin Lauter (Microsoft Research), Michael Naehrig (Microsoft Research), Emiliano de Cristofaro, Joppe W. Bos
 
 Resoures and tools available:  
@@ -26,4 +29,5 @@ http://eprint.iacr.org/2015/133.pdf
 http://eprint.iacr.org/2012/099.pdf - Homomorphic AES implementation
 
 http://eprint.iacr.org/2011/277.pdf - Homomorphic encryption without bootstrapping 
+
 https://crypto.stanford.edu/craig/craig-thesis.pdf - Fully homomorphic scheme PhD thesis
