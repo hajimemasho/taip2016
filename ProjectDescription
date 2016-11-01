@@ -1,24 +1,25 @@
 The application has five modules
 
-Database Module:
+Database Module (Dragos Burghelea):
 - Manipulates data from DB: inserts, updates, selects and deletes records (insert, update, delete are only possible from within the module)
 - Encrypts data after selection and sends it to the Query module.
 
-Utilities Module:
+Public Module (Iulia Obreja):
 - contains all general data that is used by other modules.
 - contains encryption and decryption of the data. This data is needed to be encrypted for the algorithms that will make private statistics.
 - contains a base class extended by every other class that needs to have a logger for errors or success
 - contains other classes that are useful clean code and best practices 
 
-Queries Module: 
+Queries Module (Carmen Cojocaru): 
 - implements the homomorphic operations add and multiply
+- receives the query from the Interface Module
 - send the processed data to the interface
 
-LoggerModule:
+LoggerModule (Oana Ifrim):
 - write different message( for example warnings,errors, informations) into log file
 - contains a test class for verify all methods from Logger
 
-Interface Module:
+Interface Module (Andrei Barbuta):
 - the interface module will provide the GUI for the application
 - the purpose of this module is to generate a simple intuitive inteface using specifically designed classes for objects such as buttons, textfields, etc.
 - in order to achieve this goal, there will be a MainUI java class file in which objects of the designed classes Button, TextInput, List will be implemented
