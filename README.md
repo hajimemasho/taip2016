@@ -9,6 +9,9 @@ Similar applications are the following:
 1. Secure multi-party computation that allows companies to create different statistics about their health condition. The application runs on a browser and can be accessed by concurrent users. The application is availaible on bitbucket: https://bitbucket.org/proiect-taip/secure_multi-party_computation .
 
 Important names in the field:  
+Craig Gentry (IBM's Thomas J. Watson Research Center) - first plausible construction for a fully homomorphic encryption scheme
+Shai Halevi (IBM's Thomas J. Watson Research Center) - principal developer of the HElib library, one of the leading researchers on homomorphic encryption
+Nigel Smart (University of Bristol)
 Kristin Lauter (Microsoft Research), Michael Naehrig (Microsoft Research), Emiliano de Cristofaro, Joppe W. Bos
 
 Resoures and tools available:  
@@ -20,4 +23,6 @@ https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-pink
 https://eprint.iacr.org/2011/141.pdf  
 https://eprint.iacr.org/2014/336.pdf  
 http://eprint.iacr.org/2015/133.pdf  
-
+http://eprint.iacr.org/2012/099.pdf - Homomorphic AES implementation
+http://eprint.iacr.org/2011/277.pdf - Homomorphic encryption without bootstrapping 
+https://crypto.stanford.edu/craig/craig-thesis.pdf - Fully homomorphic scheme PhD thesis
