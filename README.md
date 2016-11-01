@@ -27,7 +27,5 @@ https://eprint.iacr.org/2011/141.pdf
 https://eprint.iacr.org/2014/336.pdf  
 http://eprint.iacr.org/2015/133.pdf  
 http://eprint.iacr.org/2012/099.pdf - Homomorphic AES implementation
-
 http://eprint.iacr.org/2011/277.pdf - Homomorphic encryption without bootstrapping 
-
 https://crypto.stanford.edu/craig/craig-thesis.pdf - Fully homomorphic scheme PhD thesis
