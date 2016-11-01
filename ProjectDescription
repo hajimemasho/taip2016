@@ -1,0 +1,11 @@
+The application has five modules
+
+Database Module:
+- Manipulates data from DB: inserts, updates, selects and deletes records (insert, update, delete are only possible from within the module)
+
+Public Module:
+- Encrypts data after selection and sends it to the Query module.
+
+Queries Module: 
+- implements the homomorphic operations add and multiply
+- send the processed data to the interface
