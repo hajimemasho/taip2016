@@ -3,8 +3,11 @@ The application has five modules
 Database Module:
 - Manipulates data from DB: inserts, updates, selects and deletes records (insert, update, delete are only possible from within the module)
 
-Public Module:
-- Encrypts data after selection and sends it to the Query module.
+Utilities Module:
+- contains all general data that is used by other modules.
+- contains encryption and decryption of the data. This data is needed to be encrypted for the algorithms that will make private statistics.
+- contains a base class extended by every other class that needs to have a logger for errors or success
+- contains other classes that are useful clean code and best practices 
 
 Queries Module: 
 - implements the homomorphic operations add and multiply
