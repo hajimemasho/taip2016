@@ -1,6 +1,6 @@
 package utilitiesModule.java;
 
-public class HomomorphicEncryption implements DataEncryption{
+public class HomomorphicEncryption extends BaseClass implements DataEncryption{
 
 	@Override
 	public void encryptData(){
