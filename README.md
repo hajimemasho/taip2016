@@ -8,6 +8,8 @@ The application is based on homomorphic encryption which makes possible operatin
 <b><i>Similar applications are the following:</i></b><br>
 1. Secure multi-party computation that allows companies to create different statistics about their health condition. The application runs on a browser and can be accessed by concurrent users. The application is availaible on bitbucket: https://bitbucket.org/proiect-taip/secure_multi-party_computation .
 
+2. Building Practical Systems That Compute On Encrypted Data by Raluca Ada Popa, Doctor of Philosophy at the MASSACHUSETTS INSTITUTE OF TECHNOLOGY .This dissertation shows how to protect data confidentiality by taking a new approach to building secure systems: building practical systems that compute on encrypted data: https://people.eecs.berkeley.edu/~raluca/Thesis.pdf.The work in this thesis has already had impact: Google uses CryptDB’s design for their new Encrypted BigQuery service, and a medical application of Boston’s Newton-Wellesley hospital is secured with Mylar. The application is available on GitHib: https://github.com/strikeout/mylar
+
 <b><i>Important names in the field:</i></b><br>
 <b>Craig Gentry</b> (IBM's Thomas J. Watson Research Center) - first plausible construction for a fully homomorphic encryption scheme<br>
 <b>Shai Halevi</b> (IBM's Thomas J. Watson Research Center) - principal developer of the HElib library, one of the leading researchers on homomorphic encryption<br>
@@ -16,6 +18,7 @@ The application is based on homomorphic encryption which makes possible operatin
 <b>Michael Naehrig</b> (Microsoft Research)<br>
 <b>Emiliano de Cristofaro</b><br>
 <b>Joppe W. Bos</b>
+<b>Raluca Ada Popa(co-founder and the CTO of PreVeil, a security startup)</b>
 
 <b><i>Resoures and tools available:</i></b><br>
 <b>HElib</b> (a software library that implements homomorphic encryption) - https://github.com/shaih/HElib 
