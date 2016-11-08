@@ -13,11 +13,18 @@ import java.awt.event.ActionEvent;
  */
 public class MainUI extends JFrame {
 
+    private static MainUI instance = null;
+    
     /**
      * Creates new form MainUI
      */
-    public MainUI() {
+    private MainUI() {
         initComponents();
+    }
+    
+    public static MainUI getInstance(){
+    if (instance == null) instance = new MainUI();
+        return instance;
     }
     
     /**
