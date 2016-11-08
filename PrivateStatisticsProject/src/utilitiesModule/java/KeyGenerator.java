@@ -2,13 +2,20 @@ package utilitiesModule.java;
 
 public class KeyGenerator {
 
-	private String key;
+	private static KeyGenerator instanceKey = new KeyGenerator();
 	
-	public String generateNewKey(String[] params){
-		return key;
+	private KeyGenerator(){
+		String[] params = new String[2];
+		setKey(params);
 	}
 	
-	public String getKey(){
-		return key;
+	private void setKey(String[] params){
+	}
+	
+	public static KeyGenerator getInstance(){
+		 if(instanceKey == null) {
+			 instanceKey = new KeyGenerator();
+	      }
+		return instanceKey;
 	}
 }

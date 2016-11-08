@@ -6,8 +6,7 @@ import utilitiesModule.java.KeyGenerator;
 
 public class HomomorphicEncryptionTests {
 
-	private KeyGenerator mockPrivateKey = new KeyGenerator();
-	private KeyGenerator mockWrongPrivateKey = new KeyGenerator();
+	private KeyGenerator mockPrivateKey = KeyGenerator.getInstance();
 	
 	@Test
 	public void shouldEncryptMessage(){
@@ -16,11 +15,6 @@ public class HomomorphicEncryptionTests {
 	
 	@Test
 	public void shouldDecryptMessage(){
-		
-	}
-	
-	@Test
-	public void shouldFailToDecryptMessageWithWrongKey(){
 		
 	}
 	
