@@ -1,0 +1,18 @@
+Oana Ifrim: 
+- Singleton
+- Chain of Responsability
+
+Iulia Obreja:
+- Singleton 
+- Factory
+
+Carmen Cojocaru:
+- Chain of Responsability
+- Facade
+
+Dragos Burghelea:
+- Singleton
+- Facade
+
+Andrei Barbuta:
+- Command
