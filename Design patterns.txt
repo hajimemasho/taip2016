@@ -3,8 +3,8 @@ Oana Ifrim:
 - Chain of Responsability
 
 Iulia Obreja:
-- Singleton 
-- Factory
+- Singleton (src/utilitiesModule/java/KeyGenerator)
+- Factory (src/utilitiesModule/java/DataEncryptionFactory)
 
 Carmen Cojocaru:
 - Chain of Responsability
