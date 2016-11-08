@@ -33,8 +33,12 @@ Carmen Cojocaru:
   Obs: Am făcut și clase pentru test. Acum am observat că nu s-au comis.
 
 Dragos Burghelea:
-- Singleton
-- Facade
+- Singleton: 
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/databaseModule/java/ConnectionDb.java
+- Facade:
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/databaseModule/java/IConnectionDB.java
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/databaseModule/java/MySQLConnectionDB.java
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/databaseModule/java/SqlServerConnectionDB.java
 
 Andrei Barbuta:
 - Command
