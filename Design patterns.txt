@@ -1,6 +1,16 @@
 Oana Ifrim: 
 - Singleton
+  Classes:
+   https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/java/LoggerSingleton.java
+   https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/tests/TestSingleton.java
+    
 - Chain of Responsability
+   Classes:
+     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/java/AbstractLogger.java
+     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/java/ConsoleLogger.java
+     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/java/ErrorLogger.java
+     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/java/FileLogger.java
+     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/loggerModule/tests/ChainPatternTest.java
 
 Iulia Obreja:
 - Singleton (src/utilitiesModule/java/KeyGenerator)
