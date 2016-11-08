@@ -46,3 +46,5 @@ Andrei Barbuta:
     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/ButtonMin.java
     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/Buttons.java
     https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/ButtonsInterface.java
+- Singleton
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/MainUI.java
