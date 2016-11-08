@@ -42,3 +42,7 @@ Dragos Burghelea:
 
 Andrei Barbuta:
 - Command
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/ButtonMax.java
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/ButtonMin.java
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/Buttons.java
+    https://github.com/hajimemasho/taip2016/blob/master/PrivateStatisticsProject/src/interfaceModule/java/ButtonsInterface.java
