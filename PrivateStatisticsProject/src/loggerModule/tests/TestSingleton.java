@@ -7,14 +7,16 @@ package loggerModule.tests;
 
 import loggerModule.java.LoggerSingleton;
 
+import java.io.IOException;
+
 /**
  *
  * @author -Oana-
  */
 public class TestSingleton {
 
-	public static void main(String[] args) {
-		LoggerSingleton.getLogger().writeLog("test", LoggerSingleton.LogLevel.INFO);
+	public static void main(String[] args) throws IOException {
+		int i=LoggerSingleton.getLogger("INFO").writeLog("test", LoggerSingleton.LogLevel.INFO);
 	}
 
 }

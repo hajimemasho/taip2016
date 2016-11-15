@@ -3,16 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package loggerModule.java;
+package taip;
+import java.io.IOException;
+import org.apache.log4j.Appender;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 /**
  *
  * @author -Oana-
  */
 public class LoggerSingleton {
-	public enum LogLevel {INFO, WARNING, ERROR};
+    private static String type;
+
+  
+	public enum LogLevel {
+            INFO(0), WARNING(1), ERROR(2);
+            private final int type;
+
+            LogLevel( int type){
+            this.type=type;}
+        };
 	private static LoggerSingleton obj;
 	//private Logger oLog;
 	
@@ -20,19 +34,20 @@ public class LoggerSingleton {
         }
 	
 	
-	public static LoggerSingleton getLogger(){
+	public static LoggerSingleton getLogger(String type){
 		if (obj == null)
                     
 			obj = new LoggerSingleton();
-		
+		LoggerSingleton.type=type;
 		return obj;
 	}
-	
-      public void writeLog(String Msg, LoggerSingleton.LogLevel _eLogLevel){
+        
+   /*   public int writeLog(String Msg, LoggerSingleton.LogLevel _eLogLevel){
 		switch(_eLogLevel){
 			
 			case INFO:
 				 System.out.println("Info Console: " + Msg);
+                                 
 				break;
 			case WARNING:
 				System.out.println("Warning Console: " + Msg);
@@ -45,26 +60,46 @@ public class LoggerSingleton {
 			default:
 				
 		}
+                return 1;
       }
+	*/
 
-      public void writeLog(Exception ex, LoggerSingleton.LogLevel _eLogLevel){
+        
+          public int writeLog(String Msg, LoggerSingleton.LogLevel _eLogLevel) throws IOException{
+              Logger logger = Logger.getLogger("MyLog");
+        Appender fh = null;
+        try {
+            fh = new FileAppender(new SimpleLayout(), "MyLogFile.log");
+            logger.addAppender(fh);
+            fh.setLayout(new SimpleLayout());
+            logger.info("My first log");
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+       
 		switch(_eLogLevel){
 			
+                    
 			case INFO:
-				 System.out.println("Info Console: " + ex.getMessage());
+				 System.out.println("Info Console: " + Msg);
+                                  logger.info("Info");
 				break;
 			case WARNING:
-				System.out.println("Warning Console: " + ex.getMessage());
+				System.out.println("Warning Console: " + Msg);
+                                 logger.info("Warning");
 				break;
 			case ERROR:
-				System.out.println("Error Console: " + ex.getMessage());
+				System.out.println("Error Console: " + Msg);
+                                 logger.info("Error");
+				
 				break;
 			
 			default:
 				
 		}
+                return LogLevel.valueOf(type).type;
+                
       }
-	
 	
 }
 
