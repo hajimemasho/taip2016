@@ -16,14 +16,20 @@ public class ConnectionDb extends BaseClass {
 	
 	public static Connection getMySqlConnection(){
 		if(mySqlConnection == null){
-			mySqlConnection = new MySQLConnectionDB("","","");
+			String dbUrl="";
+			String username="";
+			String password="";
+			mySqlConnection = new MySQLConnectionDB(dbUrl,username,password);
 		}
 		return mySqlConnection.getConnection();
 	}
 
-	public static Connection geSqlServerConnection(){
+	public static Connection getSqlServerConnection(){
 		if(sqlServerConnection == null){
-			sqlServerConnection = new SqlServerConnectionDB("","","");
+			String dbUrl="";
+			String username="";
+			String password="";
+			sqlServerConnection = new SqlServerConnectionDB(dbUrl, username, password);
 		}
 		return sqlServerConnection.getConnection();
 	}

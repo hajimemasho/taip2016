@@ -2,6 +2,8 @@ package databaseModule.java;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import utilitiesModule.java.BaseClass;
 import loggerModule.java.*;
@@ -16,6 +18,9 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB{
 	
 	public MySQLConnectionDB(String dbUrl, String username, String password){
 				super();
+				_dbURL = dbUrl;
+				_username=username;
+				_password= password;
 	}
 	
 	//singleton
@@ -23,12 +28,16 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB{
 	public Connection getConnection(){
 		if(_connection==null){
 
-			/*_connection = DriverManager.getConnection(
-			                   "jdbc:" + this.dbms + "://" +
+			try{
+			_connection = DriverManager.getConnection(
+			                   "jdbc:mysql://" +
 			                   this._dbURL +
-			                   ":" + this._port + "/",
-			                   connectionProps);*/
+			                   "?user=" + this._username +
+			                   "&password=" + this._password);
 			    return _connection;
+			}catch(SQLException ex){
+				LoggerSingleton.getLogger().writeLog(ex, LoggerSingleton.LogLevel.ERROR);
+			}
 		}
 		return _connection;
 	}

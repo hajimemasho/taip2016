@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taip;
+package loggerModule.tests;
+
+import loggerModule.java.AbstractLogger;
+import loggerModule.java.ConsoleLogger;
+import loggerModule.java.ErrorLogger;
 
 /**
  *
