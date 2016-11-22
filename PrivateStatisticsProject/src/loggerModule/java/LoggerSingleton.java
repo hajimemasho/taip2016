@@ -32,11 +32,25 @@ public class LoggerSingleton {
 	
 	private LoggerSingleton(){
         }
-	
-	
+	/*public static void getInstance(String type) throws SampleException{
+            Object obj = new LoggerSingleton();
+            try{
+            throw new SampleException();
+            }
+            catch( SampleException e){
+            e.printStackTrace;}
+		
+	}
+        */
+	public static void setType(String type){
+            LoggerSingleton.type=type;
+        }
+        
+        public static String getType(){
+            return LoggerSingleton.type;
+        }
 	public static LoggerSingleton getLogger(String type){
 		if (obj == null)
-                    
 			obj = new LoggerSingleton();
 		LoggerSingleton.type=type;
 		return obj;
@@ -72,7 +86,6 @@ public class LoggerSingleton {
             fh = new FileAppender(new SimpleLayout(), "MyLogFile.log");
             logger.addAppender(fh);
             fh.setLayout(new SimpleLayout());
-            logger.info("My first log");
         } catch (SecurityException e) {
             e.printStackTrace();
         }
@@ -82,15 +95,15 @@ public class LoggerSingleton {
                     
 			case INFO:
 				 System.out.println("Info Console: " + Msg);
-                                  logger.info("Info");
+                                  logger.info("Info message");
 				break;
 			case WARNING:
 				System.out.println("Warning Console: " + Msg);
-                                 logger.info("Warning");
+                                 logger.info("Warning message");
 				break;
 			case ERROR:
 				System.out.println("Error Console: " + Msg);
-                                 logger.info("Error");
+                                 logger.info("Error message");
 				
 				break;
 			
