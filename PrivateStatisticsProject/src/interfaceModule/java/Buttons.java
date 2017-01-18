@@ -6,6 +6,8 @@ package interfaceModule.java;
  * and open the template in the editor.
  */
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author jakal
@@ -13,10 +15,16 @@ import javax.swing.JButton;
 
 public class Buttons extends JButton implements ButtonsInterface {
 
-	public Buttons() {		
-        }        
-        public void setDefaultValues(){
-        } 
+	public Buttons(String string) {
+		super(string);
+            
+		addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ev) {
+				ButtonsInterface cmd=(ButtonsInterface) ev.getSource();
+				cmd.execute();
+                }
+            });		
+    }     
         
         public void execute() {
 	}

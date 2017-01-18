@@ -7,12 +7,13 @@ package interfaceModule.java;
  */
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 /**
  *
  * @author jakal
  */
 public class MainUI extends JFrame {
-
+    
     private static MainUI instance = null;
     
     /**
@@ -37,17 +38,29 @@ public class MainUI extends JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        
+        max = new ButtonMax(20, 20, 120, 30);
+    	add(max);
+    	min = new ButtonMin(20, 60, 120, 30);
+    	add(min);
+    	
+    	result = new JLabel("result");
+    	result.setSize(60, 25);
+    	result.setLocation(40, 150);
+    	add(result);
+    	
+        //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(null);
+        /*
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup())
         );
+        */
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -88,10 +101,17 @@ public class MainUI extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainUI().setVisible(true);                
+                MainUI main = new MainUI();
+                main.setSize(320,240);
+                main.setResizable(false);
+                main.setLocationRelativeTo(null);
+                main.setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ButtonMax max;
+    private ButtonMin min;
+    static JLabel result;
     // End of variables declaration//GEN-END:variables
 }

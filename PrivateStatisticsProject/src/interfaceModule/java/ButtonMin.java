@@ -11,8 +11,13 @@ import interfaceModule.java.Buttons;
  * @author jakal
  */
 public class ButtonMin extends Buttons implements ButtonsInterface{
-    public ButtonMin(){
+    
+	public ButtonMin(int x, int y, int width, int height){
+        super("Min");
+        setBounds(x, y, width, height);
     }
+    
     public void execute(){
+    	MainUI.result.setText("Min = ");
     }
 }

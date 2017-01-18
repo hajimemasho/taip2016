@@ -11,5 +11,5 @@ package interfaceModule.java;
  * @author jakal
  */
 public interface ButtonsInterface {
-    public void execute();    
+    public abstract void execute();    
 }
