@@ -24,6 +24,8 @@ public class TestConnectionDB {
 	public void testGetMysqlConnection_Is_Connection_class(){
 		 assertEquals(ConnectionDb.getMySqlConnection().getClass(), com.mysql.jdbc.JDBC4Connection.class);
 	}
+	
+
 	//endregion mysql connection
 	
 	

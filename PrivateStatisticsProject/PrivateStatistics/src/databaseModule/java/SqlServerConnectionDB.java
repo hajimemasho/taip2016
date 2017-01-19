@@ -52,7 +52,8 @@ public class SqlServerConnectionDB extends BaseClass implements IConnectionDB {
 	}
 
 	@Override
-	public List<BigInteger> getSecurePatientAge() throws SQLException {
+//	public List<BigInteger> getSecurePatientAge() throws SQLException {
+	public List<BigInteger> getSecurePatientAge(String userType) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -70,25 +71,9 @@ public class SqlServerConnectionDB extends BaseClass implements IConnectionDB {
 	}
 
 	@Override
-	public Boolean insertSecurePatient(String name, BigInteger age) {
+	public Boolean insertSecurePatient(String name, BigInteger age, String userType) {
 		// the mysql insert statement
-				String query = " INSERT INTO `dbo`.`securepatient` (`PatientName`, `PatientAge`) VALUES (?,?)";
-				try {
-					// create the mysql insert preparedstatement
-					PreparedStatement preparedStmt = _connection
-							.prepareStatement(query);
-					preparedStmt.setString(1, name);
-					preparedStmt.setString(2, age.toString());
-
-					// execute the preparedstatement
-
-					preparedStmt.execute();
-					return true;
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					return false;
-				}
+		return null;
 
 	}
 

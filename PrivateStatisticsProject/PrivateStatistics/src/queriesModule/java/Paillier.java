@@ -74,6 +74,19 @@ public class Paillier {
 		KeyGeneration(bitLengthVal, certainty);
 	}
 
+
+	/**
+	 * Constructs an instance of the Paillier cryptosystem.
+	 * 
+	 * @param p
+	 *           p
+	 * @param q
+	 *            q
+	 */
+	public Paillier(BigInteger _p, BigInteger _q, int _bitLength) {
+		bitLength = _bitLength;
+		KeyGeneration(_p, _q);
+	}
 	/**
 	 * Constructs an instance of the Paillier cryptosystem with 512 bits of
 	 * modulus and at least 1-2^(-64) certainty of primes generation.
@@ -81,6 +94,7 @@ public class Paillier {
 	public Paillier() {
 		KeyGeneration(512, 64);
 	}
+
 
 	/**
 	 * Sets up the public key and private key.
@@ -119,6 +133,34 @@ public class Paillier {
 		}
 	}
 
+	public BigInteger getP(){
+		return p;
+	}
+	public BigInteger getQ(){
+		return q;
+	}
+	
+	public void KeyGeneration(BigInteger p_new, BigInteger q_new) {
+	
+		p = p_new;
+		q = q_new;
+
+		n = p.multiply(q);
+		nsquare = n.multiply(n);
+
+		g = new BigInteger("2");
+		lambda = p
+				.subtract(BigInteger.ONE)
+				.multiply(q.subtract(BigInteger.ONE))
+				.divide(p.subtract(BigInteger.ONE).gcd(
+						q.subtract(BigInteger.ONE)));
+		/* check whether g is good. */
+		if (g.modPow(lambda, nsquare).subtract(BigInteger.ONE).divide(n).gcd(n)
+				.intValue() != 1) {
+			System.out.println("g is not good. Choose g again.");
+			System.exit(1);
+		}
+	}
 	/**
 	 * Encrypts plaintext m. ciphertext c = g^m * r^n mod n^2. This function
 	 * explicitly requires random input r to help with encryption.

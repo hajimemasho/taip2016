@@ -1,6 +1,7 @@
 package taip;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,11 +16,11 @@ public class Main {
 	public static void main(String[] args) {
 		ConnectionDb c = new ConnectionDb();
 		List<String> patientNameList;
-		List<Integer> patientAgeList;
+		List<BigInteger> patientAgeList;
 		try {
 			patientNameList = c.getMySqlConnectionDB().getSecurePatientName();
-			patientAgeList = c.getMySqlConnectionDB().getSecurePatientAge();
-			boolean z = c.getMySqlConnectionDB().insertSecurePatient("Test2", 5);
+			patientAgeList = c.getMySqlConnectionDB().getSecurePatientAge("System");
+//			boolean z = c.getMySqlConnectionDB().insertSecurePatient("Test2", 5);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
