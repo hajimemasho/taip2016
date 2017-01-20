@@ -88,7 +88,7 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB {
 		Statement stmt = null;
 		List<BigInteger> patientAgeList = new ArrayList<BigInteger>();
 //		String query = "SELECT PatientAge FROM dbo.securepatient";
-		String query = "SELECT PatientAge FROM dbo.securepatient where UserType = '"+userType+"'";
+		String query = "SELECT PatientAge FROM dbo.securepatient where UserName = '"+userType+"'";
 		try {
 			stmt = _connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -173,7 +173,7 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB {
 	@Override
 	public Boolean insertSecurePatient(String name, BigInteger age, String userType) {
 		// the mysql insert statement
-		String query = " INSERT INTO `dbo`.`securepatient` (`PatientName`, `PatientAge`, `UserType`) VALUES (?,?, ?)";
+		String query = " INSERT INTO `dbo`.`securepatient` (`PatientName`, `PatientAge`, `UserName`) VALUES (?,?, ?)";
 		try {
 			// create the mysql insert preparedstatement
 			PreparedStatement preparedStmt = _connection
