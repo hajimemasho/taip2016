@@ -71,7 +71,7 @@ public class SqlServerConnectionDB extends BaseClass implements IConnectionDB {
 	}
 
 	@Override
-	public Boolean insertSecurePatient(String name, BigInteger age, String userType) {
+	public Boolean insertSecurePatient(String name, BigInteger age, String userType, String userName) {
 		// the mysql insert statement
 		return null;
 
@@ -79,6 +79,19 @@ public class SqlServerConnectionDB extends BaseClass implements IConnectionDB {
 
 	@Override
 	public Boolean insertInsecurePatient(String name, BigInteger age) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BigInteger getUserName(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean insertUserKeys(String username, BigInteger p, BigInteger q,
+			int keylength, int keycertainty) {
 		// TODO Auto-generated method stub
 		return null;
 	}

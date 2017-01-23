@@ -83,12 +83,12 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB {
 
 	@Override
 //	public List<BigInteger> getSecurePatientAge() throws SQLException {
-	public List<BigInteger> getSecurePatientAge(String userType) throws SQLException {
+	public List<BigInteger> getSecurePatientAge(String userName) throws SQLException {
 
 		Statement stmt = null;
 		List<BigInteger> patientAgeList = new ArrayList<BigInteger>();
 //		String query = "SELECT PatientAge FROM dbo.securepatient";
-		String query = "SELECT PatientAge FROM dbo.securepatient where UserName = '"+userType+"'";
+		String query = "SELECT PatientAge FROM dbo.securepatient where UserName = '"+userName+"'";
 		try {
 			stmt = _connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -171,16 +171,17 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB {
 	}
 
 	@Override
-	public Boolean insertSecurePatient(String name, BigInteger age, String userType) {
+	public Boolean insertSecurePatient(String name, BigInteger age, String userType, String userName) {
 		// the mysql insert statement
-		String query = " INSERT INTO `dbo`.`securepatient` (`PatientName`, `PatientAge`, `UserName`) VALUES (?,?, ?)";
+		String query = " INSERT INTO `dbo`.`securepatient` (`PatientName`, `PatientAge`, `UserLevel`, `UserName`) VALUES (?,?,?,?)";
 		try {
 			// create the mysql insert preparedstatement
 			PreparedStatement preparedStmt = _connection
 					.prepareStatement(query);
 			preparedStmt.setString(1, name);
 			preparedStmt.setString(2, age.toString());
-			preparedStmt.setString(3, userType.toString());
+			preparedStmt.setString(3, userType);
+			preparedStmt.setString(4, userName);
 
 			// execute the preparedstatement
 
@@ -203,6 +204,52 @@ public class MySQLConnectionDB extends BaseClass implements IConnectionDB {
 					.prepareStatement(query);
 			preparedStmt.setString(1, name);
 			preparedStmt.setString(2, age.toString());
+
+			// execute the preparedstatement
+
+			preparedStmt.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public BigInteger getUserName(String username) {
+		String query = "Select PatientAge from dbo.securepatient where UserName = '"+username+"'";
+		try{
+			PreparedStatement preparedStmt = _connection.prepareStatement(query);
+//			preparedStmt.setString(0, username);
+			ResultSet result = preparedStmt.executeQuery();
+			while (result.next())
+			{
+				BigInteger age = new BigInteger(result.getString("PatientAge"));
+				return age;
+			}
+			return null;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	//for tests only!
+	@Override
+	public Boolean insertUserKeys(String username, BigInteger p, BigInteger q, int keylength, int keycertainty) {
+		// the mysql insert statement
+		String query = "INSERT INTO `dbo`.`encryptionkeys`(`Username`,`p`,`q`,`keylength`,`keyCertainty`) VALUES(?,?,?,?,?)";
+		try {
+			// create the mysql insert preparedstatement
+			PreparedStatement preparedStmt = _connection
+					.prepareStatement(query);
+			preparedStmt.setString(1, username);
+			preparedStmt.setString(2, p.toString());
+			preparedStmt.setString(3, q.toString());
+			preparedStmt.setInt(4, keylength);
+			preparedStmt.setInt(5, keycertainty);
 
 			// execute the preparedstatement
 
