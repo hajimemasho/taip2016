@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 
+import queriesModule.java.UserLevelKeyCertainty;
+import queriesModule.java.UserLevelKeyLength;
 import utilitiesModule.java.Paillier;
 import databaseModule.java.ConnectionDb;
 import databaseModule.tests.TestConnectionDB;
@@ -196,34 +198,6 @@ public class Main {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-
-	public enum UserLevelKeyLength {
-		SYSTEM(512), USERLEVEL1(1024), USERLEVEL2(4096);
-
-		private final int levelCode;
-
-		private UserLevelKeyLength(int levelCode) {
-			this.levelCode = levelCode;
-		}
-
-		public int getUserLevel() {
-			return this.levelCode;
-		}
-	}
-
-	public enum UserLevelKeyCertainty {
-		SYSTEM(64), USERLEVEL1(128), USERLEVEL2(526);
-
-		private final int level;
-
-		private UserLevelKeyCertainty(int level) {
-			this.level = level;
-		}
-
-		public int getUserKeyCertainty() {
-			return this.level;
 		}
 	}
 
