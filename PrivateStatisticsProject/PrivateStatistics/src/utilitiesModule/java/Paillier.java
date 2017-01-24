@@ -1,4 +1,4 @@
-package queriesModule.java;
+package utilitiesModule.java;
 
 /**
  * This program is free software: you can redistribute it and/or modify it
@@ -74,12 +74,11 @@ public class Paillier {
 		KeyGeneration(bitLengthVal, certainty);
 	}
 
-
 	/**
 	 * Constructs an instance of the Paillier cryptosystem.
 	 * 
 	 * @param p
-	 *           p
+	 *            p
 	 * @param q
 	 *            q
 	 */
@@ -87,6 +86,7 @@ public class Paillier {
 		bitLength = _bitLength;
 		KeyGeneration(_p, _q);
 	}
+
 	/**
 	 * Constructs an instance of the Paillier cryptosystem with 512 bits of
 	 * modulus and at least 1-2^(-64) certainty of primes generation.
@@ -94,7 +94,6 @@ public class Paillier {
 	public Paillier() {
 		KeyGeneration(512, 64);
 	}
-
 
 	/**
 	 * Sets up the public key and private key.
@@ -133,15 +132,16 @@ public class Paillier {
 		}
 	}
 
-	public BigInteger getP(){
+	public BigInteger getP() {
 		return p;
 	}
-	public BigInteger getQ(){
+
+	public BigInteger getQ() {
 		return q;
 	}
-	
+
 	public void KeyGeneration(BigInteger p_new, BigInteger q_new) {
-	
+
 		p = p_new;
 		q = q_new;
 
@@ -161,6 +161,7 @@ public class Paillier {
 			System.exit(1);
 		}
 	}
+
 	/**
 	 * Encrypts plaintext m. ciphertext c = g^m * r^n mod n^2. This function
 	 * explicitly requires random input r to help with encryption.

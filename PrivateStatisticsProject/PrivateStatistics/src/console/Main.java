@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 
-import queriesModule.java.Paillier;
+import utilitiesModule.java.Paillier;
 import databaseModule.java.ConnectionDb;
 import databaseModule.tests.TestConnectionDB;
 
