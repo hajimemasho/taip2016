@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 
+import queriesModule.java.ClientUser;
+import queriesModule.java.Query;
 import queriesModule.java.UserLevelKeyCertainty;
 import queriesModule.java.UserLevelKeyLength;
 import utilitiesModule.java.Paillier;
@@ -29,7 +31,7 @@ public class Main {
 
 		//we check if the user exists
 		if(!ValidateUsername(username, paillier)){
-			ClientUser cl = CreateUser(username, UserLevelKeyLength.USERLEVEL1);
+			ClientUser cl = Query.CreateUser(username, UserLevelKeyLength.USERLEVEL1);
 			//must be sent to the client
 			System.out.println("P: "+cl.getP());
 			System.out.println("Q: "+cl.getQ());
@@ -37,13 +39,13 @@ public class Main {
 
 		List<BigInteger> list = new ArrayList<BigInteger>();
 		try {
-			list = GetUserList(username);
+			list = Query.GetUserList(username);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		BigInteger encSum = Sum(list, paillier);
+		BigInteger encSum = Query.Sum(list, paillier);
 
 		System.out.println(encSum);
 		System.out.println(paillier.Decryption(encSum));
@@ -144,14 +146,6 @@ public class Main {
 
 	}
 
-	// server
-	private static List<BigInteger> GetUserList(String userName)
-			throws SQLException {
-		ConnectionDb conn = new ConnectionDb();
-		return conn.getMySqlConnectionDB().getSecurePatientAge(userName);
-
-	}
-
 	public static void TestLoggedUser() {
 
 		ConnectionDb c = new ConnectionDb();
@@ -188,7 +182,7 @@ public class Main {
 			// patientAgeList =c.getMySqlConnectionDB().getSecurePatientAge();
 			patientAgeList = c.getMySqlConnectionDB().getSecurePatientAge(
 					userType);
-			BigInteger z = Sum(patientAgeList, paillier);
+			BigInteger z = Query.Sum(patientAgeList, paillier);
 			// System.out.println(z);
 			// System.out.println(paillier.Decryption(z).toString());
 			// for (int i = 0; i < patientAgeList.size(); i++) {
@@ -237,7 +231,7 @@ public class Main {
 			// patientAgeList =c.getMySqlConnectionDB().getSecurePatientAge();
 			patientAgeList = c.getMySqlConnectionDB().getSecurePatientAge(
 					userType);
-			BigInteger z = Sum(patientAgeList, paillier);
+			BigInteger z = Query.Sum(patientAgeList, paillier);
 			// System.out.println(z);
 			// System.out.println(paillier.Decryption(z).toString());
 			// for (int i = 0; i < patientAgeList.size(); i++) {
@@ -248,126 +242,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public class User {
-		String Name;
-		BigInteger Age;
-		String UserName;
-		UserLevelKeyLength level;
-	}
-
-	
-	public static class ClientUser{
-		public ClientUser() {}
-		
-		public String getUsername() {
-			return username;
-		}
-		public void setUsername(String username) {
-			this.username = username;
-		}
-		public BigInteger getP() {
-			return p;
-		}
-		public void setP(BigInteger p) {
-			this.p = p;
-		}
-		public BigInteger getQ() {
-			return q;
-		}
-		public void setQ(BigInteger q) {
-			this.q = q;
-		}
-		public int getCertainty() {
-			return Certainty;
-		}
-		public void setCertainty(int certainty) {
-			Certainty = certainty;
-		}
-		public int getKeyLength() {
-			return KeyLength;
-		}
-		public void setKeyLength(int keyLength) {
-			KeyLength = keyLength;
-		}
-		private String username;
-		private BigInteger p;
-		private BigInteger q;
-		private int Certainty;
-		private int KeyLength;
-	}
-	
-	// mostly server
-	public static ClientUser CreateUser(String username, UserLevelKeyLength level) {
-		
-		ConnectionDb conn = new ConnectionDb();
-
-		// server
-		BigInteger userName2 = conn.getMySqlConnectionDB()
-				.getUserName(username);
-		ClientUser cl = new ClientUser();
-		if (userName2 != null) {
-			cl.setUsername(username);
-			
-			return cl;
-		}
-		
-		Paillier p;
-		
-		// server
-		switch (level) {
-		case SYSTEM:
-			p = new Paillier(UserLevelKeyLength.SYSTEM.getUserLevel(),
-					UserLevelKeyCertainty.SYSTEM.getUserKeyCertainty());
-			break;
-		case USERLEVEL1:
-			p = new Paillier(UserLevelKeyLength.USERLEVEL1.getUserLevel(),
-					UserLevelKeyCertainty.USERLEVEL1.getUserKeyCertainty());
-			break;
-		case USERLEVEL2:
-			p = new Paillier(UserLevelKeyLength.USERLEVEL2.getUserLevel(),
-					UserLevelKeyCertainty.USERLEVEL2.getUserKeyCertainty());
-			break;
-		default:
-			p = new Paillier(UserLevelKeyLength.SYSTEM.getUserLevel(),
-					UserLevelKeyCertainty.SYSTEM.getUserKeyCertainty());
-			break;
-		}
-		// server
-		BigInteger zeroIntEnc = p.Encryption(BigInteger.ZERO);
-		// toClient
-		System.out.println(p.getP());
-		System.out.println(p.getQ());
-
-		
-		paillier = p;
-		// server
-		conn.getMySqlConnectionDB().insertSecurePatient("SYSTEM", zeroIntEnc,
-				level.toString(), username);
-		
-		int certainty;
-		switch (level) {
-		case SYSTEM:
-			certainty=64;
-			break;
-		case USERLEVEL1:
-			certainty=128;
-			break;
-		case USERLEVEL2:
-			certainty=512;
-			break;
-		default:
-			certainty=64;
-			break;
-		}
-		conn.getMySqlConnectionDB().insertUserKeys(username, p.getP(), p.getQ(), level.getUserLevel(), certainty);
-		cl.setUsername(username);
-		cl.setP(p.getP());
-		cl.setQ(p.getQ());
-		cl.setKeyLength(level.getUserLevel());
-		
-		return cl;
 	}
 
 	// client
@@ -385,7 +259,7 @@ public class Main {
 	 */
 	private static boolean ValidateUsername(String username, Paillier paillier)
 			throws SQLException {
-		List<BigInteger> list = GetUserList(username);
+		List<BigInteger> list = Query.GetUserList(username);
 		if(list.isEmpty()){
 			return false;
 		}
@@ -393,28 +267,9 @@ public class Main {
 			return true;
 		}
 		return false;
-
 	}
 
-	// server
-	/**
-	 * Calculates the sum of the encrypted list
-	 * @param list
-	 * 		The list of BigIntegers
-	 * @param paillier
-	 * 		The Paillier encryption scheme
-	 * @return BigInteger
-	 * 		The sum of the list as a BigInteger
-	 */
-	public static BigInteger Sum(List<BigInteger> list, Paillier paillier) {
-		BigInteger sum = paillier.Encryption(BigInteger.ZERO);
-		for (int i = 0; i < list.size(); i++) {
-			sum = list.get(i).multiply(sum).mod(paillier.nsquare);
-
-			// sum = sum.multiply(a).mod(paillier.nsquare);
-		}
-		return sum;
-	}
+	
 
 	// we generate 10 rows each time we test the application
 	public static List<BigInteger> GenerateData(ConnectionDb conn,
