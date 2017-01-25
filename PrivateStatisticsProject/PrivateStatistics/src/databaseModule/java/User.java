@@ -5,8 +5,8 @@ import java.math.BigInteger;
 import queriesModule.java.UserLevelKeyLength;
 
 public class User {
-	String Name;
-	BigInteger Age;
-	String UserName;
-	UserLevelKeyLength level;
+	public String Name;
+	public BigInteger Age;
+	public String UserName;
+	public UserLevelKeyLength level;
 }
