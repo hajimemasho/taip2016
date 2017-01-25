@@ -13,6 +13,7 @@ import queriesModule.java.UserLevelKeyCertainty;
 import queriesModule.java.UserLevelKeyLength;
 import utilitiesModule.java.Paillier;
 import databaseModule.java.ConnectionDb;
+import databaseModule.java.User;
 import databaseModule.tests.TestConnectionDB;
 
 public class Main {
@@ -24,9 +25,9 @@ public class Main {
 		ConnectionDb c = new ConnectionDb();
 		String username = "Dragos4";
 		BigInteger p = new BigInteger(
-				"103005585128399149929083238265072077690527500738485439868895731445431569236251");
+				"7272197131313937324683405753084789041784615870549826643877959038842990989523762517877587821946968102257061155695353929443425751900902260709450306654681239");
 		BigInteger q = new BigInteger(
-				"82676777364178431381393175642019783686295269529644687924437468821808674638247");
+				"12508361454584909926083340598363283788196138278030823856985264164586906176866559301033190136763519786830753740519479224447980809514152698291904625617627503");
 		paillier = new Paillier(p, q, 64);
 
 		//we check if the user exists
@@ -176,7 +177,7 @@ public class Main {
 			userType = "U1";
 		}
 		// Thread t= new Thread();
-		List<BigInteger> d = GenerateData(c, paillier, userType);
+//		List<BigInteger> d = GenerateData(c, paillier, userType);
 		try {
 			// patientNameList =c.getMySqlConnectionDB().getSecurePatientName();
 			// patientAgeList =c.getMySqlConnectionDB().getSecurePatientAge();
@@ -225,7 +226,7 @@ public class Main {
 			userType = "U1";
 		}
 		// Thread t= new Thread();
-		List<BigInteger> d = GenerateData(c, paillier, userType);
+//		List<BigInteger> d = GenerateData(c, paillier, userType);
 		try {
 			// patientNameList =c.getMySqlConnectionDB().getSecurePatientName();
 			// patientAgeList =c.getMySqlConnectionDB().getSecurePatientAge();
@@ -272,19 +273,27 @@ public class Main {
 	
 
 	// we generate 10 rows each time we test the application
-	public static List<BigInteger> GenerateData(ConnectionDb conn,
-			Paillier paillier, String userType) {
+	public static List<BigInteger> GenerateData(Paillier paillier, String userName, UserLevelKeyLength level) {
+		
+		ConnectionDb conn = new ConnectionDb();
 		Random r = new Random();
 		List<BigInteger> list = new ArrayList<BigInteger>();
 
+		
 		for (int i = 0; i < 1; i++) {
+			User u = new User();
+			u.Name = "Name"+i;
+			
 			int age = r.nextInt(1000);
 			BigInteger nr = new BigInteger(String.valueOf(age));
 			// System.out.println(nr);
 			BigInteger enr = paillier.Encryption(nr);
+			u.Age = enr;
+			u.UserName = userName;
+			u.level = level;
 			list.add(enr);
-			conn.getMySqlConnectionDB().insertSecurePatient("Test", enr,
-					userType, "aa");
+			Query.InsertValues(u);
+//			conn.getMySqlConnectionDB().insertSecurePatient("Test", enr, userType, "aa");
 			// conn.getMySqlConnectionDB().insertInsecurePatient("Test", nr);
 
 		}

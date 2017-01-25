@@ -6,6 +6,7 @@ import java.util.List;
 
 import utilitiesModule.java.Paillier;
 import databaseModule.java.ConnectionDb;
+import databaseModule.java.User;
 
 /**
  * 
@@ -40,47 +41,54 @@ public class Query {
 		return conn.getMySqlConnectionDB().getSecurePatientAge(userName);
 	}
 
-	// mostly server
-	public static ClientUser CreateUser(String username,
-			UserLevelKeyLength level) {
-
+	public static void InsertValues(User user){
 		ConnectionDb conn = new ConnectionDb();
+		conn.getMySqlConnectionDB().insertSecurePatient(user.Name, user.Age, user.level.toString(), user.UserName);
+	}
+	
+	
+	/**
+	 * Creates a new username and inserts the encrypted value 0 in the database
+	 * @param username
+	 * @param level
+	 * 		The level of the user
+	 * @return
+	 */
+	public static ClientUser CreateUser(String username, UserLevelKeyLength level) {
 
-		// server
-		BigInteger userName2 = conn.getMySqlConnectionDB()
-				.getUserName(username);
-		ClientUser cl = new ClientUser();
+		ConnectionDb connection = new ConnectionDb();
+
+		BigInteger userName2 = connection.getMySqlConnectionDB().getUserName(username);
+		ClientUser clientuser = new ClientUser();
 		if (userName2 != null) {
-			cl.setUsername(username);
-
-			return cl;
+			clientuser.setUsername(username);
+			return clientuser;
 		}
 
-		Paillier p;
+		Paillier paillier;
 
-		// server
 		switch (level) {
 		case SYSTEM:
-			p = new Paillier(UserLevelKeyLength.SYSTEM.getUserLevel(),
+			paillier = new Paillier(UserLevelKeyLength.SYSTEM.getUserLevel(),
 					UserLevelKeyCertainty.SYSTEM.getUserKeyCertainty());
 			break;
 		case USERLEVEL1:
-			p = new Paillier(UserLevelKeyLength.USERLEVEL1.getUserLevel(),
+			paillier = new Paillier(UserLevelKeyLength.USERLEVEL1.getUserLevel(),
 					UserLevelKeyCertainty.USERLEVEL1.getUserKeyCertainty());
 			break;
 		case USERLEVEL2:
-			p = new Paillier(UserLevelKeyLength.USERLEVEL2.getUserLevel(),
+			paillier = new Paillier(UserLevelKeyLength.USERLEVEL2.getUserLevel(),
 					UserLevelKeyCertainty.USERLEVEL2.getUserKeyCertainty());
 			break;
 		default:
-			p = new Paillier(UserLevelKeyLength.SYSTEM.getUserLevel(),
+			paillier = new Paillier(UserLevelKeyLength.SYSTEM.getUserLevel(),
 					UserLevelKeyCertainty.SYSTEM.getUserKeyCertainty());
 			break;
 		}
 		// server
-		BigInteger zeroIntEnc = p.Encryption(BigInteger.ZERO);
+		BigInteger zeroIntEnc = paillier.Encryption(BigInteger.ZERO);
 		// server
-		conn.getMySqlConnectionDB().insertSecurePatient("SYSTEM", zeroIntEnc,
+		connection.getMySqlConnectionDB().insertSecurePatient("SYSTEM", zeroIntEnc,
 				level.toString(), username);
 
 		int certainty;
@@ -98,17 +106,16 @@ public class Query {
 			certainty = 64;
 			break;
 		}
-		conn.getMySqlConnectionDB().insertUserKeys(username, p.getP(),
-				p.getQ(), level.getUserLevel(), certainty);
-		cl.setUsername(username);
-		cl.setP(p.getP());
-		cl.setQ(p.getQ());
-		cl.setKeyLength(level.getUserLevel());
+		connection.getMySqlConnectionDB().insertUserKeys(username, paillier.getP(),
+				paillier.getQ(), level.getUserLevel(), certainty);
+		clientuser.setUsername(username);
+		clientuser.setP(paillier.getP());
+		clientuser.setQ(paillier.getQ());
+		clientuser.setKeyLength(level.getUserLevel());
 
-		return cl;
+		return clientuser;
 	}
 
-	// server
 	/**
 	 * Calculates the sum of the encrypted list
 	 * 
