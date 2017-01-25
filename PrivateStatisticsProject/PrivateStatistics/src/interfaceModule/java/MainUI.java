@@ -43,17 +43,17 @@ public class MainUI extends javax.swing.JFrame {
 
 		jTextField5 = new javax.swing.JTextField();
 		jLabel1 = new javax.swing.JLabel();
-		jTextField1 = new javax.swing.JTextField();
+		jTextFieldQ = new javax.swing.JTextField();
 		jLabel2 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
-		jTextField2 = new javax.swing.JTextField();
-		jTextField3 = new javax.swing.JTextField();
+		jTextFielUserName = new javax.swing.JTextField();
+		jTextFieldP = new javax.swing.JTextField();
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
 		jButton3 = new javax.swing.JButton();
-		jTextField4 = new javax.swing.JTextField();
-		jComboBox1 = new javax.swing.JComboBox();
+		jTextFieldSum = new javax.swing.JTextField();
+		jComboBoxUserLevel = new javax.swing.JComboBox();
 		jSeparator1 = new javax.swing.JSeparator();
 		jLabel6 = new javax.swing.JLabel();
 		jSeparator2 = new javax.swing.JSeparator();
@@ -82,7 +82,7 @@ public class MainUI extends javax.swing.JFrame {
 		jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
 		jLabel4.setText("q");
 
-		jTextField2.addActionListener(new java.awt.event.ActionListener() {
+		jTextFielUserName.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jTextField2ActionPerformed(evt);
 			}
@@ -99,9 +99,9 @@ public class MainUI extends javax.swing.JFrame {
 			}
 		});
 
-		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+		jComboBoxUserLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
 				"SYSTEM", "USERLEVEL1", "USERLEVEL2" }));
-		jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+		jComboBoxUserLevel.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jComboBox1ActionPerformed(evt);
 			}
@@ -145,7 +145,7 @@ public class MainUI extends javax.swing.JFrame {
 																.addPreferredGap(
 																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																.addComponent(
-																		jTextField1,
+																		jTextFieldQ,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		135,
 																		javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,12 +168,12 @@ public class MainUI extends javax.swing.JFrame {
 																				javax.swing.GroupLayout.Alignment.LEADING,
 																				false)
 																				.addComponent(
-																						jTextField3,
+																						jTextFieldP,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						133,
 																						Short.MAX_VALUE)
 																				.addComponent(
-																						jTextField2))))
+																						jTextFielUserName))))
 								.addPreferredGap(
 										javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 										javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -192,12 +192,12 @@ public class MainUI extends javax.swing.JFrame {
 																.addPreferredGap(
 																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																.addComponent(
-																		jTextField4))
+																		jTextFieldSum))
 												.addGroup(
 														layout.createParallelGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING)
 																.addComponent(
-																		jComboBox1,
+																		jComboBoxUserLevel,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		142,
 																		javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +315,7 @@ public class MainUI extends javax.swing.JFrame {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.BASELINE)
 																				.addComponent(
-																						jTextField2,
+																						jTextFielUserName,
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,7 +327,7 @@ public class MainUI extends javax.swing.JFrame {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.BASELINE)
 																				.addComponent(
-																						jTextField3,
+																						jTextFieldP,
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +338,7 @@ public class MainUI extends javax.swing.JFrame {
 														layout.createSequentialGroup()
 																.addContainerGap()
 																.addComponent(
-																		jComboBox1,
+																		jComboBoxUserLevel,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																		javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,12 +363,12 @@ public class MainUI extends javax.swing.JFrame {
 																.addComponent(
 																		jButton3)
 																.addComponent(
-																		jTextField4,
+																		jTextFieldSum,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		javax.swing.GroupLayout.DEFAULT_SIZE,
 																		javax.swing.GroupLayout.PREFERRED_SIZE))
 												.addComponent(
-														jTextField1,
+														jTextFieldQ,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -444,9 +444,9 @@ public class MainUI extends javax.swing.JFrame {
 
 	// sum
 	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-		String p = jTextField3.getText();
-		String q = jTextField1.getText();
-		String userName = jTextField2.getText();
+		String p = jTextFieldP.getText();
+		String q = jTextFieldQ.getText();
+		String userName = jTextFielUserName.getText();
 		if (!ClientMethods.isNumeric(p)) {
 			p = "0";
 		}
@@ -456,17 +456,14 @@ public class MainUI extends javax.swing.JFrame {
 
 		BigInteger pInt = new BigInteger(p);
 		BigInteger qInt = new BigInteger(q);
-		String userType = jComboBox1.getSelectedItem().toString();
+		String userLevel = jComboBoxUserLevel.getSelectedItem().toString();
 
-		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userType);
+		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userLevel);
 		paillier = ClientMethods.CreatePaillier(pInt, qInt, keyLength);
 		List<BigInteger> list = ClientMethods.GetUserList(userName);
 		BigInteger sum = ClientMethods.Sum(list, paillier);
 		BigInteger sumDecrypted = ClientMethods.Decrypt(sum, paillier);
-		jTextField4.setText(sumDecrypted.toString());
-		// } catch (SQLException ex) {
-		// Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-		// }
+		jTextFieldSum.setText(sumDecrypted.toString());
 
 	}
 
@@ -520,7 +517,7 @@ public class MainUI extends javax.swing.JFrame {
 	private javax.swing.JButton jButton2;
 	private javax.swing.JButton jButton3;
 	private javax.swing.JButton jButton4;
-	private javax.swing.JComboBox jComboBox1;
+	private javax.swing.JComboBox jComboBoxUserLevel;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
@@ -531,10 +528,10 @@ public class MainUI extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel8;
 	private javax.swing.JSeparator jSeparator1;
 	private javax.swing.JSeparator jSeparator2;
-	private javax.swing.JTextField jTextField1;
-	private javax.swing.JTextField jTextField2;
-	private javax.swing.JTextField jTextField3;
-	private javax.swing.JTextField jTextField4;
+	private javax.swing.JTextField jTextFieldQ;
+	private javax.swing.JTextField jTextFielUserName;
+	private javax.swing.JTextField jTextFieldP;
+	private javax.swing.JTextField jTextFieldSum;
 	private javax.swing.JTextField jTextField5;
 	private javax.swing.JTextField jTextField6;
 	private javax.swing.JTextField jTextField7;
