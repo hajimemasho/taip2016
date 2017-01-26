@@ -1,0 +1,23 @@
+package mop;
+
+import java.io.*;
+import java.util.*;
+
+CalculateSum() {	
+        event connectionDB before():
+           call(* MySQLConnectionDB.getConnection()){}
+      
+        event getAGE before(ConnectionDB c):
+         call(* c.getMySqlConnectionDB().getSecurePatientAge(*)){}
+
+        event addAGE after() : 
+            call(* Main.Sum(..)){}  
+
+
+      ere: connectionDB getAGE addAGE
+
+        @match {
+       	    System.out.println("operations order was violated ");
+	    
+        }
+}

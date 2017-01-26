@@ -1,0 +1,29 @@
+package taip;
+
+import java.io.*;
+import java.util.*;
+import utilitiesModule.java.Paillier;
+
+EncryptionAfterKeyGeneration(Paillier p) {
+
+
+  event constructor after(Paillier p)  : 
+              call(* Paillier.Paillier(..)) 
+              && target(p) { } 
+  event keyGeneration after(Paillier p)  : 
+              call(* Paillier.KeyGeneration (..)) 
+              && target(p) { } 
+  event encryption before(Paillier p) : 
+              call(* Paillier.Encryption(..)) 
+              && target(p) { } 
+
+  srs: constructor keyGeneration -> #epsilon .
+	keyGeneration constructor -> #fail .
+	keyGeneration keyGeneration -> keyGeneration .
+	keyGeneration encryption -> #epsilon .
+	encryption -> #fail .
+	constructor keyGeneration encryption -> #epsilon .
+
+  @fail { System.out.println("Call order of methods is wrong!");}
+  
+}

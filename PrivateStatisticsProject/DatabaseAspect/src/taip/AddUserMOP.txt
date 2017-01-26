@@ -1,0 +1,19 @@
+package mop;
+
+import java.io.*;
+import java.util.*;
+
+CreateUSER(String name, BigInteger age, String userType) {	
+        event connectionDB before() : 
+                (call(* MySQLConnectionDB.getConnection())){}
+        event addUSER after(String name, BigInteger age, String userType) : 
+                call(* MySQLConnectionDB.insertSecurePatient(..)){}  
+
+
+       ere:  connectionDB addUSER
+
+        @match {
+       	    System.out.println("User was registered without a connectionDB before ");
+	    
+        }
+}
