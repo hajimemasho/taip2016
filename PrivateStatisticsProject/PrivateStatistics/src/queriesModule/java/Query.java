@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import utilitiesModule.java.Paillier;
+import utilitiesModule.java.User;
 import databaseModule.java.ConnectionDb;
-import databaseModule.java.User;
 
 /**
  * 
@@ -41,9 +41,9 @@ public class Query {
 		return conn.getMySqlConnectionDB().getSecurePatientAge(userName);
 	}
 
-	public static void InsertValues(User user){
+	public static boolean InsertValues(User user){
 		ConnectionDb conn = new ConnectionDb();
-		conn.getMySqlConnectionDB().insertSecurePatient(user.Name, user.Age, user.level.toString(), user.UserName);
+		return conn.getMySqlConnectionDB().insertSecurePatient(user.Name, user.Age, user.level.toString(), user.UserName);
 	}
 	
 	
@@ -112,7 +112,8 @@ public class Query {
 		clientuser.setP(paillier.getP());
 		clientuser.setQ(paillier.getQ());
 		clientuser.setKeyLength(level.getUserLevel());
-
+		clientuser.setUserType(level);
+		
 		return clientuser;
 	}
 

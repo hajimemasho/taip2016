@@ -35,9 +35,17 @@ public class ClientUser{
 	public void setKeyLength(int keyLength) {
 		KeyLength = keyLength;
 	}
+	public UserLevelKeyLength getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserLevelKeyLength userType) {
+		this.userType = userType;
+	}
 	private String username;
 	private BigInteger p;
 	private BigInteger q;
 	private int Certainty;
 	private int KeyLength;
+	private UserLevelKeyLength userType;
 }
