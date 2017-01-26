@@ -11,8 +11,12 @@ import databaseModule.java.MySQLConnectionDB;
 import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import com.mysql.jdbc.StringUtils;
 
@@ -47,28 +51,27 @@ public class MainUI extends javax.swing.JFrame {
 		jLabel2 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
-		jTextFielUserName = new javax.swing.JTextField();
+		jTextFieldUserName = new javax.swing.JTextField();
 		jTextFieldP = new javax.swing.JTextField();
-		jButton1 = new javax.swing.JButton();
-		jButton2 = new javax.swing.JButton();
-		jButton3 = new javax.swing.JButton();
+		jButtonCreate = new javax.swing.JButton();
+		jButtonValidate = new javax.swing.JButton();
+		jButtonSum = new javax.swing.JButton();
 		jTextFieldSum = new javax.swing.JTextField();
 		jComboBoxUserLevel = new javax.swing.JComboBox();
 		jSeparator1 = new javax.swing.JSeparator();
 		jLabel6 = new javax.swing.JLabel();
 		jSeparator2 = new javax.swing.JSeparator();
-		jTextField6 = new javax.swing.JTextField();
+		jTextFieldName = new javax.swing.JTextField();
 		jLabel5 = new javax.swing.JLabel();
 		jLabel7 = new javax.swing.JLabel();
 		jLabel8 = new javax.swing.JLabel();
-		jTextField7 = new javax.swing.JTextField();
-		jTextField8 = new javax.swing.JTextField();
-		jButton4 = new javax.swing.JButton();
-
-		jTextField5.setText("jTextField5");
+		jTextFieldAge = new javax.swing.JTextField();
+		jTextFieldCost = new javax.swing.JTextField();
+		jButtonInsert = new javax.swing.JButton();
+		jButtonGenerateData = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 
 		jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
 		jLabel1.setText("Private Statistics");
@@ -82,30 +85,42 @@ public class MainUI extends javax.swing.JFrame {
 		jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
 		jLabel4.setText("q");
 
-		jTextFielUserName.addActionListener(new java.awt.event.ActionListener() {
+		jTextFieldUserName
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						jTextField2ActionPerformed(evt);
+					}
+				});
+
+		jButtonCreate.setText("Create");
+		jButtonCreate.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jTextField2ActionPerformed(evt);
+				jButtonCreateActionPerformed(evt);
 			}
 		});
 
-		jButton1.setText("Create");
-
-		jButton2.setText("Validate");
-
-		jButton3.setText("SUM");
-		jButton3.addActionListener(new java.awt.event.ActionListener() {
+		jButtonValidate.setText("Validate");
+		jButtonValidate.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButton3ActionPerformed(evt);
+				jButtonValidateActionPerformed(evt);
 			}
 		});
 
-		jComboBoxUserLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
-				"SYSTEM", "USERLEVEL1", "USERLEVEL2" }));
-		jComboBoxUserLevel.addActionListener(new java.awt.event.ActionListener() {
+		jButtonSum.setText("SUM");
+		jButtonSum.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jComboBox1ActionPerformed(evt);
+				jButtonSumActionPerformed(evt);
 			}
 		});
+
+		jComboBoxUserLevel.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "SYSTEM", "USERLEVEL1", "USERLEVEL2" }));
+		jComboBoxUserLevel
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						jComboBox1ActionPerformed(evt);
+					}
+				});
 
 		jLabel6.setIcon(new javax.swing.ImageIcon(
 				"C:\\Users\\User\\Desktop\\facultate\\TAIP\\PrivateStatisticsProject\\PrivateStatistics\\src\\interfaceModule\\java\\image3.jpg")); // NOI18N
@@ -120,13 +135,20 @@ public class MainUI extends javax.swing.JFrame {
 		jLabel8.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
 		jLabel8.setText("Cost");
 
-		jButton4.setText("INSERT");
-		jButton4.addActionListener(new java.awt.event.ActionListener() {
+		jButtonInsert.setText("INSERT");
+		jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButton4ActionPerformed(evt);
+				jButtonInsertActionPerformed(evt);
 			}
 		});
 
+		jButtonGenerateData.setText("Generate Data");
+		jButtonGenerateData
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						jButtonGenerateDataActionPerformed(evt);
+					}
+				});
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
 				getContentPane());
 		getContentPane().setLayout(layout);
@@ -173,7 +195,7 @@ public class MainUI extends javax.swing.JFrame {
 																						133,
 																						Short.MAX_VALUE)
 																				.addComponent(
-																						jTextFielUserName))))
+																						jTextFieldUserName))))
 								.addPreferredGap(
 										javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 										javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -185,7 +207,7 @@ public class MainUI extends javax.swing.JFrame {
 												.addGroup(
 														layout.createSequentialGroup()
 																.addComponent(
-																		jButton3,
+																		jButtonSum,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		65,
 																		javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,11 +226,11 @@ public class MainUI extends javax.swing.JFrame {
 																.addGroup(
 																		layout.createSequentialGroup()
 																				.addComponent(
-																						jButton1)
+																						jButtonCreate)
 																				.addPreferredGap(
 																						javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																				.addComponent(
-																						jButton2))))
+																						jButtonValidate))))
 								.addGap(54, 54, 54))
 				.addGroup(
 						layout.createSequentialGroup()
@@ -223,7 +245,7 @@ public class MainUI extends javax.swing.JFrame {
 																.addPreferredGap(
 																		javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 																.addComponent(
-																		jTextField8,
+																		jTextFieldCost,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		87,
 																		javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,14 +264,14 @@ public class MainUI extends javax.swing.JFrame {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.LEADING)
 																				.addComponent(
-																						jTextField6,
+																						jTextFieldName,
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						87,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
-																										jTextField7,
+																										jTextFieldAge,
 																										javax.swing.GroupLayout.PREFERRED_SIZE,
 																										87,
 																										javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,7 +280,9 @@ public class MainUI extends javax.swing.JFrame {
 																										javax.swing.GroupLayout.DEFAULT_SIZE,
 																										Short.MAX_VALUE)
 																								.addComponent(
-																										jButton4)))))
+																										jButtonInsert)
+																								.addComponent(
+																										jButtonGenerateData)))))
 								.addGap(119, 119, 119))
 				.addGroup(
 						layout.createSequentialGroup()
@@ -315,7 +339,7 @@ public class MainUI extends javax.swing.JFrame {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.BASELINE)
 																				.addComponent(
-																						jTextFielUserName,
+																						jTextFieldUserName,
 																						javax.swing.GroupLayout.PREFERRED_SIZE,
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,9 +372,9 @@ public class MainUI extends javax.swing.JFrame {
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.BASELINE)
 																				.addComponent(
-																						jButton2)
+																						jButtonValidate)
 																				.addComponent(
-																						jButton1))))
+																						jButtonCreate))))
 								.addPreferredGap(
 										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 								.addGroup(
@@ -361,7 +385,7 @@ public class MainUI extends javax.swing.JFrame {
 														layout.createParallelGroup(
 																javax.swing.GroupLayout.Alignment.BASELINE)
 																.addComponent(
-																		jButton3)
+																		jButtonSum)
 																.addComponent(
 																		jTextFieldSum,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -393,7 +417,7 @@ public class MainUI extends javax.swing.JFrame {
 										layout.createParallelGroup(
 												javax.swing.GroupLayout.Alignment.BASELINE)
 												.addComponent(
-														jTextField6,
+														jTextFieldName,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,11 +429,13 @@ public class MainUI extends javax.swing.JFrame {
 												javax.swing.GroupLayout.Alignment.BASELINE)
 												.addComponent(jLabel7)
 												.addComponent(
-														jTextField7,
+														jTextFieldAge,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addComponent(jButton4))
+												.addComponent(jButtonInsert)
+												.addComponent(
+														jButtonGenerateData))
 								.addPreferredGap(
 										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 								.addGroup(
@@ -417,7 +443,7 @@ public class MainUI extends javax.swing.JFrame {
 												javax.swing.GroupLayout.Alignment.BASELINE)
 												.addComponent(jLabel8)
 												.addComponent(
-														jTextField8,
+														jTextFieldCost,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -435,36 +461,186 @@ public class MainUI extends javax.swing.JFrame {
 		// TODO add your handling code here:
 	}
 
-	private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-		String name = jTextField6.getText();
-		int age = Integer.parseInt(jTextField7.getText());
-		String user = jTextField8.getText();
+	// insert
+	private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {
+		String pStr = jTextFieldP.getText();
+		String qStr = jTextFieldQ.getText();
+		String userName = jTextFieldUserName.getText();
+		String name = jTextFieldName.getText();
+		String age = jTextFieldAge.getText();
+		String cost = jTextFieldCost.getText();
 
+		if (!ClientMethods.isNumeric(pStr)) {
+			pStr = "0";
+		}
+		if (!ClientMethods.isNumeric(qStr)) {
+			qStr = "0";
+		}
+		if (!ClientMethods.isNumeric(age)) {
+			age = "0";
+		}
+		if (!ClientMethods.isNumeric(cost)) {
+			cost = "0";
+		}
+
+		BigInteger p = new BigInteger(pStr);
+		BigInteger q = new BigInteger(qStr);
+		String userLevel = jComboBoxUserLevel.getSelectedItem().toString();
+		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userLevel);
+		if (paillier == null) {
+			paillier = ClientMethods.CreatePaillier(p, q, keyLength);
+		}
+		boolean result = ClientMethods.InsertData(paillier, userName,
+				keyLength, name, new BigInteger(age), new BigInteger(cost));
+		String msg = "";
+		if (result) {
+			msg = "Values inserted!";
+		} else {
+			msg = "Values were not inserted!";
+		}
+		JOptionPane.showMessageDialog(null, msg);
+	}
+
+	// generate data
+	private void jButtonGenerateDataActionPerformed(
+			java.awt.event.ActionEvent evt) {
+		String pStr = jTextFieldP.getText();
+		String qStr = jTextFieldQ.getText();
+		String userName = jTextFieldUserName.getText();
+
+		if (!ClientMethods.isNumeric(pStr)) {
+			pStr = "0";
+		}
+		if (!ClientMethods.isNumeric(qStr)) {
+			qStr = "0";
+		}
+
+		BigInteger p = new BigInteger(pStr);
+		BigInteger q = new BigInteger(qStr);
+		String userLevel = jComboBoxUserLevel.getSelectedItem().toString();
+		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userLevel);
+		if (paillier == null) {
+			paillier = ClientMethods.CreatePaillier(p, q, keyLength);
+		}
+		Random r = new Random();
+		for (int i = 0; i < 10; i++) {
+
+			int randAge = r.nextInt(1000);
+			BigInteger age = new BigInteger(String.valueOf(randAge));
+			String name = "username_" + randAge;
+			int randCost = r.nextInt(10000);
+			BigInteger cost = new BigInteger(String.valueOf(randCost));	
+			boolean result = ClientMethods.InsertData(paillier, userName,
+					keyLength, name, age, cost);
+		}
+		String msg = "";
+//		if (result) {
+			msg = "Values inserted!";
+//		} else {
+//			msg = "Values were not inserted!";
+//		}
+		JOptionPane.showMessageDialog(null, msg);
+	}
+
+	// create
+	private void jButtonCreateActionPerformed(java.awt.event.ActionEvent evt) {
+		String pStr = jTextFieldP.getText();
+		String qStr = jTextFieldQ.getText();
+		String userName = jTextFieldUserName.getText();
+
+		if (!ClientMethods.isNumeric(pStr)) {
+			pStr = "0";
+		}
+		if (!ClientMethods.isNumeric(qStr)) {
+			qStr = "0";
+		}
+
+		BigInteger p = new BigInteger(pStr);
+		BigInteger q = new BigInteger(qStr);
+		String userLevel = jComboBoxUserLevel.getSelectedItem().toString();
+		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userLevel);
+
+		if (paillier == null) {
+			paillier = ClientMethods.CreatePaillier(p, q, keyLength);
+		}
+
+		ClientUser cl = ClientMethods.CreateUser(userName, keyLength);
+		String msg;
+		if (cl.getP() == null) {
+			msg = String.format(
+					"The username '%s' already exists in the database!",
+					cl.getUsername());
+		} else {
+			msg = String
+					.format("The username '%s' has been created as a '%s'! \n The P: %s ,\n Q: %s",
+							cl.getUsername(), cl.getUserType().toString(), cl
+									.getP().toString(), cl.getQ().toString());
+		}
+		JTextArea textarea = new JTextArea(msg);
+		textarea.setEditable(true);
+		JOptionPane.showMessageDialog(null, textarea);
+	}
+
+	// validate
+	private void jButtonValidateActionPerformed(java.awt.event.ActionEvent evt) {
+		String pStr = jTextFieldP.getText();
+		String qStr = jTextFieldQ.getText();
+		String userName = jTextFieldUserName.getText();
+		if (!ClientMethods.isNumeric(pStr)) {
+			pStr = "0";
+		}
+		if (!ClientMethods.isNumeric(qStr)) {
+			qStr = "0";
+		}
+
+		BigInteger p = new BigInteger(pStr);
+		BigInteger q = new BigInteger(qStr);
+		String userLevel = jComboBoxUserLevel.getSelectedItem().toString();
+		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userLevel);
+
+		if (paillier == null) {
+			paillier = ClientMethods.CreatePaillier(p, q, keyLength);
+		}
+		Boolean valid;
+		try {
+			valid = ClientMethods.ValidateUsername(userName, paillier);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			valid = false;
+		}
+		String msg = "";
+		if (valid) {
+			msg = "The user's P and Q are valid!";
+		} else {
+			msg = "The user's P and Q are not valid!";
+		}
+		JOptionPane.showMessageDialog(null, msg);
 	}
 
 	// sum
-	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-		String p = jTextFieldP.getText();
-		String q = jTextFieldQ.getText();
-		String userName = jTextFielUserName.getText();
-		if (!ClientMethods.isNumeric(p)) {
-			p = "0";
+	private void jButtonSumActionPerformed(java.awt.event.ActionEvent evt) {
+		String pStr = jTextFieldP.getText();
+		String qStr = jTextFieldQ.getText();
+		String userName = jTextFieldUserName.getText();
+		if (!ClientMethods.isNumeric(pStr)) {
+			pStr = "0";
 		}
-		if (!ClientMethods.isNumeric(q)) {
-			q = "0";
+		if (!ClientMethods.isNumeric(qStr)) {
+			qStr = "0";
 		}
 
-		BigInteger pInt = new BigInteger(p);
-		BigInteger qInt = new BigInteger(q);
+		BigInteger p = new BigInteger(pStr);
+		BigInteger q = new BigInteger(qStr);
 		String userLevel = jComboBoxUserLevel.getSelectedItem().toString();
-
 		UserLevelKeyLength keyLength = ClientMethods.GetUserLevel(userLevel);
-		paillier = ClientMethods.CreatePaillier(pInt, qInt, keyLength);
+		if (paillier == null) {
+			paillier = ClientMethods.CreatePaillier(p, q, keyLength);
+		}
 		List<BigInteger> list = ClientMethods.GetUserList(userName);
 		BigInteger sum = ClientMethods.Sum(list, paillier);
 		BigInteger sumDecrypted = ClientMethods.Decrypt(sum, paillier);
 		jTextFieldSum.setText(sumDecrypted.toString());
-
 	}
 
 	/**
@@ -513,10 +689,11 @@ public class MainUI extends javax.swing.JFrame {
 	}
 
 	// Variables declaration - do not modify
-	private javax.swing.JButton jButton1;
-	private javax.swing.JButton jButton2;
-	private javax.swing.JButton jButton3;
-	private javax.swing.JButton jButton4;
+	private javax.swing.JButton jButtonCreate;
+	private javax.swing.JButton jButtonValidate;
+	private javax.swing.JButton jButtonSum;
+	private javax.swing.JButton jButtonInsert;
+	private javax.swing.JButton jButtonGenerateData;
 	private javax.swing.JComboBox jComboBoxUserLevel;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
@@ -529,13 +706,13 @@ public class MainUI extends javax.swing.JFrame {
 	private javax.swing.JSeparator jSeparator1;
 	private javax.swing.JSeparator jSeparator2;
 	private javax.swing.JTextField jTextFieldQ;
-	private javax.swing.JTextField jTextFielUserName;
+	private javax.swing.JTextField jTextFieldUserName;
 	private javax.swing.JTextField jTextFieldP;
 	private javax.swing.JTextField jTextFieldSum;
 	private javax.swing.JTextField jTextField5;
-	private javax.swing.JTextField jTextField6;
-	private javax.swing.JTextField jTextField7;
-	private javax.swing.JTextField jTextField8;
+	private javax.swing.JTextField jTextFieldName;
+	private javax.swing.JTextField jTextFieldAge;
+	private javax.swing.JTextField jTextFieldCost;
 	// End of variables declaration
 
 	private Paillier paillier;
