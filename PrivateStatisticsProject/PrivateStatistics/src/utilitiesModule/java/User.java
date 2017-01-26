@@ -1,4 +1,4 @@
-package databaseModule.java;
+package utilitiesModule.java;
 
 import java.math.BigInteger;
 
